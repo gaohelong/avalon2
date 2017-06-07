@@ -1,5 +1,5 @@
 /*!
-built in 2017-6-7:18:35 version 2.2.7 by 司徒正美
+built in 2017-6-7:18:44 version 2.2.7 by 司徒正美
 https://github.com/RubyLouvre/avalon/tree/2.2.4
 
 更改下载Promise的提示
