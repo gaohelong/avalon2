@@ -1,2 +1,4 @@
 !/karma/repeat.js
 /nbproject/private/
+node_modules/
+coverage/

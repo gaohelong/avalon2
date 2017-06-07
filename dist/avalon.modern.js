@@ -1,5 +1,5 @@
 /*!
-built in 2017-5-9:11:6 version 2.2.6 by 司徒正美
+built in 2017-6-7:18:35 version 2.2.7 by 司徒正美
 https://github.com/RubyLouvre/avalon/tree/2.2.4
 
 更改下载Promise的提示
@@ -32,7 +32,9 @@ https://github.com/RubyLouvre/avalon/tree/2.2.4
         objectobject: 7, //IE7-8
         objectundefined: 6, //IE6
         undefinedfunction: NaN, // other modern browsers
-        undefinedobject: NaN }
+        undefinedobject: NaN //Mobile Safari 8.0.0 (iOS 8.4.0) 
+        //objectfunction chrome 47
+    }
     /* istanbul ignore next  */
     var msie = document$1.documentMode || versions[typeof document$1.all + typeof XMLHttpRequest]
 
@@ -410,7 +412,7 @@ https://github.com/RubyLouvre/avalon/tree/2.2.4
         inspect: inspect,
         ohasOwn: ohasOwn,
         rword: rword,
-        version: "2.2.6",
+        version: "2.2.7",
         vmodels: {},
 
         directives: directives,
@@ -650,7 +652,8 @@ https://github.com/RubyLouvre/avalon/tree/2.2.4
                     })
                 }
             }
-            return a.replace(ron, " ").replace(/\s+/g, " ") //移除onXXX事件
+            return a.replace(ron, " ").replace(/\s+/g, " " //移除onXXX事件
+            )
         })
     }
 
@@ -6152,6 +6155,7 @@ https://github.com/RubyLouvre/avalon/tree/2.2.4
         }
     })
 
+    //https://github.com/RubyLouvre/avalon/issues/1977
     function getValidate(dom) {
         while (dom.tagName !== 'FORM') {
             dom = dom.parentNode

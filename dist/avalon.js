@@ -1,5 +1,5 @@
 /*!
-built in 2017-5-9:11:38 version 2.2.6 by 司徒正美
+built in 2017-6-7:18:36 version 2.2.7 by 司徒正美
 https://github.com/RubyLouvre/avalon/tree/2.2.4
 
 修正IE下 orderBy BUG
@@ -32,7 +32,9 @@ https://github.com/RubyLouvre/avalon/tree/2.2.4
         objectobject: 7, //IE7-8
         objectundefined: 6, //IE6
         undefinedfunction: NaN, // other modern browsers
-        undefinedobject: NaN };
+        undefinedobject: NaN //Mobile Safari 8.0.0 (iOS 8.4.0) 
+        //objectfunction chrome 47
+    };
     /* istanbul ignore next  */
     var msie = document$1.documentMode || versions[typeof document$1.all + typeof XMLHttpRequest];
 
@@ -410,7 +412,7 @@ https://github.com/RubyLouvre/avalon/tree/2.2.4
         inspect: inspect,
         ohasOwn: ohasOwn,
         rword: rword,
-        version: "2.2.6",
+        version: "2.2.7",
         vmodels: {},
 
         directives: directives,
@@ -605,8 +607,9 @@ https://github.com/RubyLouvre/avalon/tree/2.2.4
     function iterator(vars, body, ret) {
         var fun = 'for(var ' + vars + 'i=0,n = this.length; i < n; i++){' + body.replace('_', '((i in this) && fn.call(scope,this[i],i,this))') + '}' + ret;
         /* jshint ignore:start */
-        return Function('fn,scope', fun);
+        return Function('fn,scope', fun
         /* jshint ignore:end */
+        );
     }
     /* istanbul ignore if*/
     if (!isNative(ap.map)) {
@@ -958,7 +961,8 @@ https://github.com/RubyLouvre/avalon/tree/2.2.4
                     });
                 }
             }
-            return a.replace(ron, " ").replace(/\s+/g, " "); //移除onXXX事件
+            return a.replace(ron, " ").replace(/\s+/g, " " //移除onXXX事件
+            );
         });
     }
 
@@ -1721,7 +1725,8 @@ https://github.com/RubyLouvre/avalon/tree/2.2.4
             data = data.trim();
             if (data) {
                 if (rvalidchars.test(data.replace(rvalidescape, '@').replace(rvalidtokens, ']').replace(rvalidbraces, ''))) {
-                    return new Function('return ' + data)(); // jshint ignore:line
+                    return new Function('return ' + data) // jshint ignore:line
+                    ();
                 }
             }
             throw TypeError('Invalid JSON: [' + data + ']');
